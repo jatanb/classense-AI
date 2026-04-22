@@ -14,5 +14,3 @@ segno #for QR scan
 pillow #for image preprocessing
 
 streamlit
-
-

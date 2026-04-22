@@ -12,3 +12,16 @@ def header_home():
 
 
     """,unsafe_allow_html=True)
+
+def header_dashboard():
+    
+
+    st.markdown(f"""
+        <div style="display:flex;align-items:center; justify-content:center; margin-bottom:30px">
+          <h2 style='text-align:center; color:black'>Classence</h2>
+                
+        </div>
+   
+
+
+    """,unsafe_allow_html=True)

@@ -8,11 +8,7 @@ def style_background_home():
                 background: #1f2939 !important;
                 }
 
-                .stApp div[data-testid="stColumn"]{
-                background-color:#ffe2c6 !important;
-                padding:1.5rem !important;
-                border-radius:3rem !important
-                }
+                
                 
        </style>
 
@@ -23,7 +19,7 @@ def style_background_dashboard():
     st.markdown("""
        <style>
                 .stApp{
-                background: ##2563eb !important;
+                background: #CBC3E3 !important;
                 }
                 
        </style>
@@ -40,13 +36,13 @@ def style_base_layout():
             /*hide top bar of streamlit*/
 
             #MainMenu,footer,header{
-                 visibility:hidden;
-                }
+                  visibility:hidden;
+                 }
 
-            .block-container{
-                 padding-top:1.5rem !important;
-                }
-            h1{
+             .block-container{
+                  padding-top:1.5rem !important;
+                 } 
+            h2{
                  font-family: 'Climate Crisis',sans-serif !important;
                  font-size: 3.5rem !important;
                  line-height:1.1 !important;
