@@ -9,7 +9,6 @@ def style_background_home():
                 }
 
                 
-                
        </style>
 
                 """
@@ -31,8 +30,8 @@ def style_background_dashboard():
 def style_base_layout():
     st.markdown("""
        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
-            @import url('https://fonts.googleapis.com/css2?family=Abel&family=Outfit:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Abel&family=Outfit:wght@100..900&family=Titan+One&display=swap');
             /*hide top bar of streamlit*/
 
             #MainMenu,footer,header{
@@ -42,25 +41,25 @@ def style_base_layout():
              .block-container{
                   padding-top:1.5rem !important;
                  } 
-            h2{
-                 font-family: 'Climate Crisis',sans-serif !important;
+            h1{
+                 font-family: "Bungee", sans-serif !important;
                  font-size: 3.5rem !important;
                  line-height:1.1 !important;
                  margin-bottom:0rem !important;
                 }
             h2{
-                 font-family: 'Climate Crisis',sans-serif !important;
-                 font-size: 3.5rem !important;
+                 font-family: "Bungee", sans-serif !important;
+                 font-size: 2rem !important;
                  line-height:1.1 !important;
                  margin-bottom:0rem !important;
                 }
-            h3,h4,p,span{
+            h3,h4,p{
                  font-family: 'outfit', sans-serif ;
                 }
 
             button{
-                 border-radius: 1.1rem !important;
-                 background: #3b82f6 !important;
+                 border-radius: 1.5rem !important;
+                 background-color: #FF69B4 !important;
                  color: white !important;
                  padding: 10px 20px !important;
                  border: none !important;
@@ -69,7 +68,7 @@ def style_base_layout():
 
             button[kind="secondary"]{
                  border-radius: 1.1rem !important;
-                 background: #2563eb !important;
+                 background-color: #002C54 !important;
                  color: white !important;
                  padding: 10px 20px !important;
                  border: none !important;
@@ -78,12 +77,14 @@ def style_base_layout():
 
             button[kind="tertiary"]{
                  border-radius: 1.1rem !important;
-                 background: #4b5563 !important;
+                 background: black !important;
                  color: white !important;
                  padding: 10px 20px !important;
                  border: none !important;
                  transition: transform 0.25s ease-in-out !important;
                 }
+            button:hover{
+                transform:scale(1.05)}
                 
                 
                 

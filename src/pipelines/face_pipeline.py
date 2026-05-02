@@ -6,6 +6,8 @@ import streamlit as st
 from src.database.db import get_all_students
 
 
+
+
 @st.cache_resource
 def load_dlib_models():
     detector=dlib.get_frontal_face_detector()
@@ -79,7 +81,7 @@ def predict_attendance(class_image_np):
      if not model_data:
           return detected_students,[],len(encodings)
      
-     clf=model_data('clf')
+     clf=model_data['clf']
      x_train=model_data['x']
      y_train=model_data['y']
 
@@ -91,13 +93,13 @@ def predict_attendance(class_image_np):
          else:
               predicted_id=int(all_students[0])
 
-         student_embedding=x_train[x_train.index(predicted_id)]
+         student_embedding=x_train[y_train.index(predicted_id)]
 
-         best_match_score=np.linalg.norm(student_embedding-encoding)
+         best_match_score=np.linalg.norm(student_embedding - encoding)
 
          resemblance_threhold=0.6
 
          if best_match_score<=resemblance_threhold:
               detected_students[predicted_id]=True
 
-         return detected_students,all_students,len(encoding)
+         return detected_students,all_students,len(encodings)

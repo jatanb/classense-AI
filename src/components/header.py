@@ -2,10 +2,10 @@ import streamlit as st
 
 def header_home():
     
-
     st.markdown(f"""
         <div style="display:flex; flex-direction:column;align-items:center; justify-content:center; margin-bottom:30px">
-          <h1 style='text-align:center; color:white'>Classence</h1>
+         
+          <h1 style='text-align:center; color:'>Classence</h1>
                 
         </div>
    
@@ -16,9 +16,9 @@ def header_home():
 def header_dashboard():
     
 
-    st.markdown(f"""
+    st.markdown("""
         <div style="display:flex;align-items:center; justify-content:center; margin-bottom:30px">
-          <h2 style='text-align:center; color:black'>Classence</h2>
+          <h2 style='text-align:left; color:#5865F2'>Classence</h2>
                 
         </div>
    
