@@ -7,7 +7,11 @@ dlib-bin
 
 
 git+https://github.com/ageitgey/face_recognition_models
+<<<<<<< HEAD
 setuptools<70.0.0
+=======
+setuptools==65.5.0
+>>>>>>> e66252c6dbe9f8b0fc17be328b1be62925ad33a6
 
 supabase
 bcrypt #for password hashing
