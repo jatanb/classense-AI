@@ -12,7 +12,7 @@ def home_screen():
     col1,col2=st.columns(2)
 
     with col1:
-        st.header("I'm Teacher ")
+        st.header("I'm Teacher")
         if st.button("teacher portal",icon=':material/arrow_outward:',icon_position='right',type='primary'):
             st.session_state['login_type']='teacher'
             st.rerun()
