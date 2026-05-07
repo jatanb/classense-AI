@@ -5,7 +5,7 @@ from src.database.db import create_attendance,enroll_student_to_subject
 from src.database.config import supabase
 
 def show_attendance_result(df,logs):
-        st.write('please review attendance before conf')
+        st.write('please review attendance before confirming.')
         st.dataframe(df,hide_index=True,width='stretch')
 
         col1,col2=st.columns(2)

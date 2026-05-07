@@ -7,14 +7,13 @@ dlib-bin
 
 
 git+https://github.com/ageitgey/face_recognition_models
-setuptools==65.5.0
+setuptools<70.0.0
 
 supabase
 bcrypt #for password hashing
 
 segno #for QR scan
 pillow #for image preprocessing
-
 
 
 librosa

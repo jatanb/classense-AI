@@ -81,7 +81,7 @@ def teacher_dashboard():
 
 def teacher_tab_take_attendance():
     teacher_id=st.session_state.teacher_data['teacher_id']
-    st.header("Take AI Attendance")
+    st.header(":blue[Take AI Attendance]")
 
     if 'attendance_images' not in st.session_state:
         st.session_state.attendance_images=[]
@@ -166,7 +166,7 @@ def teacher_tab_take_attendance():
                             'is_present':bool(is_present)
                         })
 
-                attendance_result_dialog(pd.DataFrame(results),attendance_to_log)
+                    attendance_result_dialog(pd.DataFrame(results),attendance_to_log)
 
     with c3:
         if st.button('Use Voice Attendance',type='primary',width='stretch',icon=':material/mic:'):
@@ -176,7 +176,7 @@ def teacher_tab_manage_subjects():
     teacher_id=st.session_state.teacher_data['teacher_id']
     col1,col2=st.columns(2)
     with col1:
-        st.header('Manage Subjects',width='stretch')
+        st.header(':blue[Manage Subjects]',width='stretch')
     with col2:
         if st.button("create new subject",width='stretch'):
             create_subject_dialog(teacher_id)
@@ -207,7 +207,7 @@ def teacher_tab_manage_subjects():
 
 
 def teacher_tab_attendance_records():
-    st.header("Attendance History")
+    st.header(":blue[Attendance History]")
     teacher_id=st.session_state.teacher_data['teacher_id']
     records=get_attendance_for_teacher(teacher_id)
     if not records:
@@ -274,14 +274,14 @@ def teacher_screen_login():
             st.rerun()
         
 
-   st.header("Login using password",text_alignment="center")
+   st.header(":blue[Login using password]",text_alignment="center")
    st.space()
 
-   teacher_username=st.text_input("Enter username",placeholder="rahulkumar")
+   teacher_username=st.text_input(":blue[Enter username]",placeholder="rahulkumar")
 
    
 
-   teacher_pass=st.text_input("Enter password",type="password",placeholder="Enter password")
+   teacher_pass=st.text_input(":blue[Enter password]",type="password",placeholder="Enter password")
 
    
 

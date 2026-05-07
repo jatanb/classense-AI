@@ -56,13 +56,17 @@ def get_trained_model():
     if len(x)==0:
             return 0
         
-    clf=SVC(kernel='Linear',probability=True,class_weight='balanced')
+    clf=SVC(kernel='linear',probability=True,class_weight='balanced')
 
     try:
-         clf.fit(x,y)
-    except ValueError:
-         pass
+        clf.fit(x,y)
+    except ValueError as e:
+        print("error :",e)
+        return None
+
     return {'clf':clf,'x':x,'y':y}
+
+
 
 
 def train_classifier():
@@ -72,34 +76,34 @@ def train_classifier():
 
 
 def predict_attendance(class_image_np):
-     encodings=get_face_embeddings(class_image_np)
+    encodings=get_face_embeddings(class_image_np)
 
-     detected_students={}
+    detected_students={}
 
-     model_data=get_trained_model()
+    model_data=get_trained_model()
 
-     if not model_data:
+    if not model_data:
           return detected_students,[],len(encodings)
      
-     clf=model_data['clf']
-     x_train=model_data['x']
-     y_train=model_data['y']
+    clf=model_data['clf']
+    x_train=model_data['x']
+    y_train=model_data['y']
 
-     all_students=sorted(list(set(y_train)))
+    all_students=sorted(list(set(y_train)))
 
-     for encoding in encodings:
-         if len(all_students)>=2:
-             predicted_id=int(clf.predict([encoding])[0])
-         else:
-              predicted_id=int(all_students[0])
+    for encoding in encodings:
+        if len(all_students)>=2:
+            predicted_id=int(clf.predict([encoding])[0])
+        else:
+            predicted_id=int(all_students[0])
 
-         student_embedding=x_train[y_train.index(predicted_id)]
+        student_embedding=x_train[y_train.index(predicted_id)]
 
-         best_match_score=np.linalg.norm(student_embedding - encoding)
+        best_match_score=np.linalg.norm(student_embedding - encoding)
 
-         resemblance_threhold=0.6
+        resemblance_threhold=0.6
 
-         if best_match_score<=resemblance_threhold:
-              detected_students[predicted_id]=True
+        if best_match_score<=resemblance_threhold:
+            detected_students[predicted_id]=True
 
-         return detected_students,all_students,len(encodings)
+    return detected_students,all_students,len(encodings)

@@ -28,7 +28,7 @@ def student_dashboard():
 
     c1,c2=st.columns(2)
     with c1:
-        st.header('Your Enrolled Subjects')
+        st.header(':blue[Your Enrolled Subjects]')
     with c2:
         if st.button('Enroll in Subjects',type='primary',width='stretch'):
          enroll_dialog()
@@ -59,23 +59,32 @@ def student_dashboard():
 
         stats=stats_map.get(sid,{"total":0,"attended":0})
 
-        def unenroll_btn():
-                if st.button("Unenroll from this cource",type='tertiary',width='stretch'):
-                    unenroll_student_to_subject(student_id,sid)
+        def unenroll_btn(student_id, sid, sub_name):
+               if st.button(
+        "Unenroll from this course",
+        key=f"unenroll_{student_id}_{sid}", 
+        type='tertiary',
+        width='stretch',
+        icon=':material/delete_forever:'
+         ):
+                   unenroll_student_to_subject(student_id, sid)
+                   st.toast(f"Unenrolled from {sub_name} successfully")
+                   st.rerun()
 
         
 
-        with cols[i%2]:
-            subject_card(
-                name=sub['name'],
-                code=sub['subject_code'],
-                section=sub['section'],
-                stats=[
-                    ('📅','Total',stats['total']),
-                    ('✅','Attended',stats['attended']),
-                ],
-                footer_callback=unenroll_btn
-            )
+        with cols[i % 2]:
+         subject_card(
+        name=sub['name'],
+        code=sub['subject_code'],
+        section=sub['section'],
+        stats=[
+            ('📅','Total',stats['total']),
+            ('✅','Attended',stats['attended']),
+        ],
+        footer_callback=lambda sid=sid, name=sub['name']: 
+            unenroll_btn(student_id, sid, name)   
+    )
     
 
    
@@ -99,18 +108,18 @@ def student_screen():
 
     st.space()
 
-    st.header("Login using face id",text_alignment="center")
+    st.header(":blue[Login using face id]",text_alignment="center")
     st.space()
     st.space()
 
     show_registration=False
-    photo_source=st.camera_input("Position your face in center")
+    photo_source=st.camera_input(":grey[Position your face in center]")
 
     if photo_source:
         img=np.array(Image.open(photo_source))
 
         with st.spinner('AI is scanning..'):
-         detected,all_ids,num_faces=predict_attendance(img)
+            detected,all_ids,num_faces=predict_attendance(img)
 
         if num_faces ==0:
             st.warning("Face not found")
@@ -126,7 +135,7 @@ def student_screen():
                     st.session_state.is_logged_in=True
                     st.session_state.user_role='student'
                     st.session_state.student_data=student
-
+                    st.toast('Welcome Back')
                     time.sleep(1)
                     st.rerun()
             else:
@@ -145,8 +154,8 @@ def student_screen():
 
          try:
             audio_data=st.audio_input("Record a short phrase like i am present, my name is akash")
-         except Exception:
-            st.error('Audio Data failed')
+         except Exception as e:
+            st.error('Audio Data failed',e)
 
          if st.button('Create Acount',type='primary'):
             if new_name:
@@ -168,7 +177,7 @@ def student_screen():
 
                             st.session_state.is_logged_in=True
                             st.session_state.user_rate='student'
-                            st.session_state.student_data=student
+                            st.session_state.student_data=response_data[0]
                             st.toast(f'Profile created! Hi {new_name}')
                             time.sleep(1)
                             st.rerun()
